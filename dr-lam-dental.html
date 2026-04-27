@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Nai Yan Lam, DDS | Dentist in Chinatown, NYC</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root {
+  --jade: #1B5E45;
+  --jade-mid: #256B52;
+  --jade-light: #2E8B69;
+  --jade-pale: #EAF4EF;
+  --jade-glow: rgba(27,94,69,0.12);
+  --gold: #C4922A;
+  --gold-light: #D4A843;
+  --gold-pale: #FDF6E9;
+  --ivory: #FDFAF5;
+  --ivory-dark: #F5F0E8;
+  --cream: #EDE8DE;
+  --charcoal: #1A1A1A;
+  --charcoal-mid: #2C2C2C;
+  --text-dark: #1C1C1C;
+  --text-mid: #4A4A4A;
+  --text-light: #888;
+  --white: #FFFFFF;
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --radius: 14px;
+  --radius-lg: 24px;
+  --shadow: 0 4px 24px rgba(27,94,69,0.08);
+  --shadow-lg: 0 20px 60px rgba(27,94,69,0.13);
+  --shadow-gold: 0 8px 32px rgba(196,146,42,0.2);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:var(--font-body);color:var(--text-dark);background:var(--ivory);overflow-x:hidden;line-height:1.7;}
+
+/* ── NAVBAR ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:1.1rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(253,250,245,0.93);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(196,146,42,0.15);
+  transition:all 0.3s ease;
+}
+nav.scrolled{padding:0.65rem 2.5rem;box-shadow:0 2px 24px rgba(27,94,69,0.1);}
+.nav-logo{display:flex;flex-direction:column;text-decoration:none;}
+.nav-logo-name{font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--jade);line-height:1.1;}
+.nav-logo-sub{font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-top:1px;}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
+.nav-links a{font-size:0.85rem;font-weight:500;color:var(--text-mid);text-decoration:none;letter-spacing:0.01em;transition:color 0.2s;}
+.nav-links a:hover{color:var(--jade);}
+.nav-cta{
+  background:var(--jade);color:white!important;
+  padding:0.6rem 1.5rem;border-radius:50px;
+  font-weight:600!important;letter-spacing:0.02em;
+  transition:all 0.25s!important;
+  box-shadow:0 4px 16px rgba(27,94,69,0.25);
+}
+.nav-cta:hover{background:var(--jade-light)!important;transform:translateY(-1px);box-shadow:0 8px 24px rgba(27,94,69,0.3)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--charcoal);border-radius:2px;transition:0.3s;}
+
+/* ── HERO ── */
+#hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;
+  background:var(--charcoal);
+  overflow:hidden;padding-top:80px;
+}
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0.55;}
+.hero-texture{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 70% at 65% 50%, rgba(27,94,69,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(196,146,42,0.08) 0%, transparent 60%),
+    linear-gradient(160deg, #111 0%, #1A1A1A 40%, #0F2018 100%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  max-width:1240px;margin:0 auto;padding:0 2.5rem;
+  display:grid;grid-template-columns:1.1fr 0.9fr;gap:5rem;align-items:center;
+}
+.hero-text{color:white;}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  margin-bottom:1.5rem;
+}
+.hero-eyebrow-line{width:32px;height:1px;background:var(--gold);}
+.hero-eyebrow-text{
+  font-size:0.75rem;font-weight:600;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--gold-light);
+}
+.hero-title{
+  font-family:var(--font-display);
+  font-size:clamp(2.8rem,4.5vw,4rem);
+  font-weight:700;line-height:1.1;
+  margin-bottom:0.5rem;
+  letter-spacing:-0.01em;
+}
+.hero-title em{display:block;font-style:italic;color:var(--gold-light);font-weight:400;}
+.hero-tagline{
+  font-size:1rem;color:rgba(255,255,255,0.6);
+  margin-bottom:2rem;max-width:480px;line-height:1.75;
+  border-left:2px solid var(--jade-light);padding-left:1rem;
+}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
+.btn-gold{
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  color:var(--charcoal);padding:0.9rem 2.2rem;border-radius:50px;
+  font-weight:700;font-size:0.9rem;text-decoration:none;
+  display:inline-flex;align-items:center;gap:0.5rem;
+  box-shadow:var(--shadow-gold);transition:all 0.25s;border:none;cursor:pointer;
+  font-family:var(--font-body);letter-spacing:0.02em;
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(196,146,42,0.4);}
+.btn-ghost{
+  background:transparent;color:white;
+  padding:0.9rem 2.2rem;border-radius:50px;
+  font-weight:500;font-size:0.9rem;text-decoration:none;
+  display:inline-flex;align-items:center;gap:0.5rem;
+  border:1px solid rgba(255,255,255,0.25);transition:all 0.25s;
+  font-family:var(--font-body);
+}
+.btn-ghost:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.5);}
+.hero-stats{display:flex;gap:2.5rem;}
+.hero-stat{}
+.stat-num{
+  font-family:var(--font-display);font-size:2.2rem;font-weight:700;
+  color:white;line-height:1;
+}
+.stat-num span{color:var(--gold-light);}
+.stat-label{font-size:0.75rem;color:rgba(255,255,255,0.45);margin-top:0.25rem;letter-spacing:0.04em;}
+
+/* Hero visual — dr card */
+.hero-visual{display:flex;justify-content:center;}
+.dr-card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(196,146,42,0.2);
+  border-radius:28px;padding:2.5rem;width:360px;
+  backdrop-filter:blur(24px);
+  box-shadow:0 32px 80px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.06);
+  animation:cardFloat 7s ease-in-out infinite;
+  transform-style:preserve-3d;
+}
+@keyframes cardFloat{
+  0%,100%{transform:rotateY(-6deg) rotateX(3deg) translateY(0);}
+  50%{transform:rotateY(-2deg) rotateX(1deg) translateY(-14px);}
+}
+.dr-card-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.75rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08);}
+.dr-avatar{
+  width:64px;height:64px;border-radius:50%;
+  background:linear-gradient(135deg,var(--jade-mid),var(--jade-light));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:white;
+  flex-shrink:0;border:2px solid rgba(196,146,42,0.3);
+}
+.dr-card-name{font-family:var(--font-display);font-size:1.2rem;font-weight:600;color:white;line-height:1.2;}
+.dr-card-title{font-size:0.75rem;color:var(--gold-light);margin-top:2px;letter-spacing:0.04em;}
+.dr-badge{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  background:rgba(27,94,69,0.3);border:1px solid rgba(27,94,69,0.5);
+  border-radius:50px;padding:0.3rem 0.75rem;
+  font-size:0.72rem;font-weight:600;color:#6ECFAA;margin-top:0.5rem;letter-spacing:0.04em;
+}
+.dr-badge::before{content:'';display:block;width:6px;height:6px;background:#6ECFAA;border-radius:50%;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.dr-services{display:flex;flex-direction:column;gap:0.65rem;margin-bottom:1.75rem;}
+.dr-service{
+  display:flex;align-items:center;gap:0.8rem;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:10px;padding:0.65rem 0.9rem;
+  transition:background 0.2s;
+}
+.dr-service:hover{background:rgba(255,255,255,0.08);}
+.svc-icon{font-size:1rem;width:28px;text-align:center;}
+.svc-info{}
+.svc-name{font-size:0.82rem;font-weight:600;color:rgba(255,255,255,0.9);}
+.svc-note{font-size:0.72rem;color:rgba(255,255,255,0.4);}
+.dr-card-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:1.25rem;border-top:1px solid rgba(255,255,255,0.07);
+}
+.dr-rating{display:flex;align-items:center;gap:0.4rem;}
+.stars-gold{color:var(--gold-light);font-size:0.85rem;letter-spacing:1px;}
+.dr-rating span{font-size:0.78rem;color:rgba(255,255,255,0.5);}
+.dr-walk-in{
+  background:rgba(196,146,42,0.15);border:1px solid rgba(196,146,42,0.3);
+  border-radius:50px;padding:0.3rem 0.8rem;
+  font-size:0.7rem;font-weight:600;color:var(--gold-light);letter-spacing:0.04em;
+}
+
+/* ── TRUST BAR ── */
+#trust{
+  background:var(--jade);color:white;
+  padding:1.5rem 0;
+}
+.trust-inner{
+  max-width:1240px;margin:0 auto;padding:0 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1.25rem;
+}
+.trust-item{display:flex;align-items:center;gap:0.7rem;flex:1;min-width:150px;justify-content:center;}
+.trust-icon{font-size:1.2rem;opacity:0.9;}
+.trust-item strong{display:block;font-size:0.875rem;font-weight:600;color:white;}
+.trust-item span{font-size:0.75rem;color:rgba(255,255,255,0.65);}
+.trust-sep{width:1px;height:30px;background:rgba(255,255,255,0.15);}
+
+/* ── SECTIONS ── */
+section{padding:6rem 0;}
+.container{max-width:1240px;margin:0 auto;padding:0 2.5rem;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  font-size:0.72rem;font-weight:700;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--jade);margin-bottom:0.8rem;
+}
+.eyebrow-bar{width:28px;height:2px;background:var(--gold);border-radius:2px;}
+.section-title{
+  font-family:var(--font-display);
+  font-size:clamp(2rem,3.5vw,2.8rem);
+  font-weight:700;line-height:1.2;color:var(--charcoal);
+  margin-bottom:1rem;
+}
+.section-sub{font-size:0.97rem;color:var(--text-mid);max-width:520px;line-height:1.75;}
+.section-hdr{margin-bottom:3.5rem;}
+.section-hdr.center{text-align:center;}
+.section-hdr.center .section-sub{margin:0 auto;}
+
+/* ── SERVICES ── */
+#services{background:var(--ivory);}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.svc-card{
+  background:white;border-radius:var(--radius-lg);
+  padding:2.2rem;border:1px solid rgba(27,94,69,0.08);
+  box-shadow:var(--shadow);transition:all 0.35s ease;
+  position:relative;overflow:hidden;cursor:default;
+}
+.svc-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--jade),var(--gold));
+  transform:scaleX(0);transform-origin:left;transition:transform 0.35s ease;
+}
+.svc-card:hover{transform:translateY(-7px);box-shadow:var(--shadow-lg);}
+.svc-card:hover::after{transform:scaleX(1);}
+.svc-card-icon{
+  width:56px;height:56px;border-radius:16px;
+  background:var(--jade-pale);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;margin-bottom:1.25rem;
+  transition:background 0.3s;
+}
+.svc-card:hover .svc-card-icon{background:var(--jade);filter:none;}
+.svc-card h3{font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--charcoal);margin-bottom:0.6rem;}
+.svc-card p{font-size:0.875rem;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;}
+.svc-tag{
+  display:inline-flex;align-items:center;gap:0.35rem;
+  font-size:0.75rem;font-weight:600;color:var(--jade);
+  background:var(--jade-pale);border-radius:50px;padding:0.3rem 0.8rem;
+}
+
+/* ── ABOUT / DR LAM ── */
+#about{background:var(--ivory-dark);}
+.about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:center;}
+.about-visual{position:relative;}
+.about-card{
+  background:var(--charcoal);border-radius:var(--radius-lg);
+  padding:3rem;color:white;position:relative;overflow:hidden;
+  box-shadow:var(--shadow-lg);
+}
+.about-card-bg{
+  position:absolute;top:-30px;right:-30px;width:200px;height:200px;
+  background:radial-gradient(circle,rgba(27,94,69,0.3) 0%,transparent 70%);
+  border-radius:50%;
+}
+.about-card-bg2{
+  position:absolute;bottom:-20px;left:-20px;width:150px;height:150px;
+  background:radial-gradient(circle,rgba(196,146,42,0.15) 0%,transparent 70%);
+  border-radius:50%;
+}
+.about-dr-name{font-family:var(--font-display);font-size:2rem;font-weight:700;line-height:1.1;margin-bottom:0.25rem;}
+.about-dr-cred{font-size:0.8rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:2rem;}
+.about-metrics{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;}
+.metric{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1.1rem;}
+.metric-num{font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--gold-light);line-height:1;}
+.metric-label{font-size:0.72rem;color:rgba(255,255,255,0.5);margin-top:0.25rem;letter-spacing:0.04em;}
+.about-schools{display:flex;flex-direction:column;gap:0.6rem;}
+.school-badge{
+  display:flex;align-items:center;gap:0.6rem;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);
+  border-radius:10px;padding:0.6rem 0.9rem;
+  font-size:0.8rem;color:rgba(255,255,255,0.75);
+}
+.school-badge span{font-size:0.9rem;}
+.about-float-badge{
+  position:absolute;top:-1.5rem;right:-1.5rem;
+  background:var(--gold);color:var(--charcoal);
+  border-radius:var(--radius);padding:1rem 1.25rem;
+  box-shadow:var(--shadow-gold);text-align:center;
+}
+.float-num{font-family:var(--font-display);font-size:1.8rem;font-weight:700;line-height:1;}
+.float-label{font-size:0.7rem;font-weight:600;letter-spacing:0.04em;margin-top:2px;}
+.about-text .section-sub{margin-bottom:1.75rem;}
+.about-points{list-style:none;display:flex;flex-direction:column;gap:0.9rem;margin-bottom:2rem;}
+.about-points li{display:flex;align-items:flex-start;gap:0.85rem;font-size:0.9rem;color:var(--text-mid);}
+.check{
+  width:22px;height:22px;border-radius:50%;
+  background:var(--jade-pale);color:var(--jade);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.72rem;font-weight:700;flex-shrink:0;margin-top:2px;
+}
+
+/* ── PROCESS ── */
+#process{background:var(--ivory);}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative;}
+.process-grid::before{
+  content:'';position:absolute;
+  top:2.75rem;left:12%;right:12%;height:1px;
+  background:linear-gradient(90deg,var(--jade-pale),var(--cream));
+  z-index:0;
+}
+.process-step{text-align:center;padding:0 0.5rem;position:relative;z-index:1;}
+.process-num{
+  width:56px;height:56px;border-radius:50%;
+  background:white;border:2px solid var(--jade-pale);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.25rem;
+  font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--jade);
+  box-shadow:var(--shadow);transition:all 0.3s;position:relative;z-index:2;
+}
+.process-step:hover .process-num{background:var(--jade);color:white;border-color:var(--jade);transform:scale(1.08);}
+.process-step h4{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--charcoal);margin-bottom:0.5rem;}
+.process-step p{font-size:0.83rem;color:var(--text-light);line-height:1.65;}
+
+/* ── TESTIMONIALS ── */
+#testimonials{background:var(--charcoal);color:white;}
+#testimonials .section-title{color:white;}
+#testimonials .eyebrow{color:var(--gold-light);}
+#testimonials .section-sub{color:rgba(255,255,255,0.55);}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.testi-card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--radius-lg);padding:2rem;
+  transition:all 0.3s;position:relative;
+}
+.testi-card:hover{background:rgba(255,255,255,0.07);transform:translateY(-4px);}
+.testi-card::before{
+  content:'\201C';position:absolute;top:1rem;right:1.25rem;
+  font-family:var(--font-display);font-size:4.5rem;line-height:1;
+  color:rgba(196,146,42,0.2);font-weight:700;pointer-events:none;
+}
+.testi-stars{color:var(--gold-light);font-size:0.85rem;letter-spacing:2px;margin-bottom:1rem;}
+.testi-text{font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.75;margin-bottom:1.5rem;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:0.75rem;}
+.testi-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,var(--jade-mid),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-weight:700;font-size:0.85rem;flex-shrink:0;
+}
+.testi-name{font-weight:600;font-size:0.88rem;color:white;}
+.testi-label{font-size:0.72rem;color:rgba(255,255,255,0.4);}
+.testi-platforms{
+  display:flex;justify-content:center;gap:2rem;margin-top:3.5rem;
+  flex-wrap:wrap;
+}
+.platform-badge{
+  display:flex;align-items:center;gap:0.6rem;
+  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
+  border-radius:50px;padding:0.6rem 1.4rem;
+  font-size:0.82rem;color:rgba(255,255,255,0.7);
+}
+.platform-badge strong{color:white;}
+
+/* ── OFFER ── */
+#offer{
+  background:linear-gradient(135deg,var(--jade) 0%,var(--jade-mid) 60%,#0F3020 100%);
+  color:white;text-align:center;padding:5.5rem 0;
+  position:relative;overflow:hidden;
+}
+#offer::before{
+  content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(196,146,42,0.1) 0%,transparent 65%);
+  border-radius:50%;pointer-events:none;
+}
+#offer .section-title{color:white;max-width:600px;margin:0 auto 1rem;}
+#offer .eyebrow{color:var(--gold-light);}
+.offer-sub{font-size:1rem;color:rgba(255,255,255,0.7);max-width:500px;margin:0 auto 2.5rem;line-height:1.75;}
+.offer-box{
+  display:inline-flex;flex-direction:column;align-items:center;
+  background:rgba(255,255,255,0.08);border:1px solid rgba(196,146,42,0.3);
+  border-radius:20px;padding:2rem 3.5rem;margin-bottom:2.5rem;
+  backdrop-filter:blur(10px);
+}
+.offer-label{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-light);font-weight:600;margin-bottom:0.4rem;}
+.offer-deal{font-family:var(--font-display);font-size:2.2rem;font-weight:700;margin-bottom:0.2rem;}
+.offer-fine{font-size:0.8rem;color:rgba(255,255,255,0.5);}
+.offer-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
+
+/* ── CONTACT ── */
+#contact{background:var(--ivory);}
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;align-items:start;}
+.contact-info h3{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;}
+.contact-item{display:flex;gap:1rem;margin-bottom:1.5rem;}
+.contact-icon{
+  width:46px;height:46px;border-radius:13px;
+  background:var(--jade-pale);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+}
+.contact-item strong{display:block;font-size:0.85rem;font-weight:600;color:var(--charcoal);}
+.contact-item span{font-size:0.85rem;color:var(--text-mid);line-height:1.5;}
+.contact-form{
+  background:white;border-radius:var(--radius-lg);
+  padding:2.75rem;box-shadow:var(--shadow-lg);
+  border:1px solid rgba(27,94,69,0.08);
+}
+.form-title{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--charcoal);margin-bottom:1.75rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.fg{margin-bottom:1.2rem;}
+.fg label{display:block;font-size:0.78rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem;letter-spacing:0.03em;text-transform:uppercase;}
+.fg input,.fg select,.fg textarea{
+  width:100%;padding:0.8rem 1rem;
+  border:1.5px solid rgba(27,94,69,0.15);border-radius:10px;
+  font-family:var(--font-body);font-size:0.9rem;color:var(--text-dark);
+  background:var(--ivory);transition:border-color 0.2s,box-shadow 0.2s;outline:none;
+  appearance:none;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{
+  border-color:var(--jade);box-shadow:0 0 0 3px rgba(27,94,69,0.1);
+}
+.fg textarea{min-height:100px;resize:vertical;}
+.form-btn{
+  width:100%;padding:1rem;
+  background:var(--jade);color:white;
+  border:none;border-radius:50px;
+  font-family:var(--font-body);font-size:0.95rem;font-weight:700;
+  cursor:pointer;transition:all 0.25s;letter-spacing:0.03em;
+}
+.form-btn:hover{background:var(--jade-light);transform:translateY(-2px);box-shadow:0 8px 28px rgba(27,94,69,0.3);}
+
+/* ── FAQ ── */
+#faq{background:var(--ivory-dark);}
+.faq-wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:1rem;}
+.faq-item{background:white;border-radius:var(--radius);border:1px solid rgba(27,94,69,0.08);box-shadow:var(--shadow);overflow:hidden;}
+.faq-q{
+  padding:1.3rem 1.6rem;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;
+  font-weight:600;font-size:0.95rem;color:var(--charcoal);
+  transition:background 0.2s;
+}
+.faq-q:hover{background:var(--jade-pale);}
+.faq-icon{font-size:1.2rem;color:var(--jade);transition:transform 0.3s;flex-shrink:0;}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height 0.35s ease,padding 0.2s;
+  font-size:0.88rem;color:var(--text-mid);line-height:1.75;
+  padding:0 1.6rem;
+}
+.faq-item.open .faq-a{max-height:200px;padding:0 1.6rem 1.3rem;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+
+/* ── FOOTER ── */
+footer{background:var(--charcoal);color:rgba(255,255,255,0.55);padding:4rem 0 2rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-brand .nav-logo-name{color:white;font-size:1.3rem;display:block;margin-bottom:0.2rem;}
+.footer-brand .nav-logo-sub{color:var(--gold-light);}
+.footer-brand p{font-size:0.83rem;line-height:1.75;max-width:250px;margin-top:1rem;}
+.footer-col h4{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:white;margin-bottom:1rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.55rem;}
+.footer-col a{font-size:0.83rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;}
+.footer-col a:hover{color:var(--gold-light);}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,0.07);padding-top:1.5rem;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+}
+.footer-bottom p{font-size:0.78rem;}
+.footer-links{display:flex;gap:1.5rem;}
+.footer-links a{font-size:0.78rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--gold-light);}
+
+/* ── STICKY CTA ── */
+.sticky-cta{position:fixed;bottom:2rem;right:2rem;z-index:999;display:flex;flex-direction:column;gap:0.7rem;align-items:flex-end;}
+.s-btn{
+  display:flex;align-items:center;gap:0.55rem;
+  padding:0.65rem 1.35rem;border-radius:50px;
+  font-size:0.85rem;font-weight:700;text-decoration:none;
+  transition:all 0.25s;box-shadow:0 4px 20px rgba(0,0,0,0.2);
+  font-family:var(--font-body);border:none;cursor:pointer;
+}
+.s-btn.call{background:var(--jade);color:white;}
+.s-btn.book{background:var(--gold);color:var(--charcoal);}
+.s-btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 8px 28px rgba(0,0,0,0.25);}
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(32px);}
+.reveal.on{opacity:1;transform:translateY(0);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal-l{opacity:0;transform:translateX(-36px);}
+.reveal-l.on{opacity:1;transform:translateX(0);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal-r{opacity:0;transform:translateX(36px);}
+.reveal-r.on{opacity:1;transform:translateX(0);transition:opacity 0.7s ease,transform 0.7s ease;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .testi-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem;}
+}
+@media(max-width:900px){
+  .hero-content{grid-template-columns:1fr;gap:3rem;text-align:center;}
+  .hero-tagline{margin:0 auto 2rem;border-left:none;border-top:2px solid var(--jade-light);padding:0.75rem 0 0;text-align:center;}
+  .hero-btns{justify-content:center;}
+  .hero-stats{justify-content:center;}
+  .hero-visual{display:none;}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .process-grid{grid-template-columns:1fr 1fr;}
+  .process-grid::before{display:none;}
+  .about-float-badge{display:none;}
+}
+@media(max-width:640px){
+  section{padding:4rem 0;}
+  nav{padding:1rem 1.25rem;}
+  .container{padding:0 1.25rem;}
+  .services-grid,.testi-grid{grid-template-columns:1fr;}
+  .process-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero-stats{flex-direction:column;align-items:center;gap:1rem;}
+  .form-row{grid-template-columns:1fr;}
+  .sticky-cta{bottom:1rem;right:1rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-name">Dr. Nai Yan Lam</span>
+    <span class="nav-logo-sub">DDS · Chinatown, NYC</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact" class="nav-cta">Book Appointment</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-texture"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <div class="hero-eyebrow-text">36 Years of Excellence · Chinatown, NYC</div>
+      </div>
+      <h1 class="hero-title">
+        NYC's Trusted Dentist
+        <em>for Every Smile.</em>
+      </h1>
+      <p class="hero-tagline">Columbia-educated. Walk-ins welcome. Premium dental care at prices that respect every New Yorker — from students to families to professionals.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-gold">📅 Book Appointment</a>
+        <a href="tel:+12127662128" class="btn-ghost">📞 (212) 766-2128</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="stat-num">200<span>+</span></div>
+          <div class="stat-label">5-Star Reviews</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-num">4.9<span>★</span></div>
+          <div class="stat-label">Avg. Rating</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-num">36<span>+</span></div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="dr-card">
+        <div class="dr-card-header">
+          <div class="dr-avatar">NL</div>
+          <div>
+            <div class="dr-card-name">Dr. Nai Yan Lam</div>
+            <div class="dr-card-title">DDS · Columbia University</div>
+            <div class="dr-badge">✦ Accepting New Patients</div>
+          </div>
+        </div>
+        <div class="dr-services">
+          <div class="dr-service"><div class="svc-icon">🦷</div><div class="svc-info"><div class="svc-name">General Dentistry</div><div class="svc-note">Cleanings, fillings, exams</div></div></div>
+          <div class="dr-service"><div class="svc-icon">✨</div><div class="svc-info"><div class="svc-name">Cosmetic Dentistry</div><div class="svc-note">Whitening, veneers, bonding</div></div></div>
+          <div class="dr-service"><div class="svc-icon">🔬</div><div class="svc-info"><div class="svc-name">Root Canal Therapy</div><div class="svc-note">Pain-free, expert care</div></div></div>
+          <div class="dr-service"><div class="svc-icon">😁</div><div class="svc-info"><div class="svc-name">Extractions & Implants</div><div class="svc-note">Full restorative options</div></div></div>
+        </div>
+        <div class="dr-card-footer">
+          <div class="dr-rating">
+            <div class="stars-gold">★★★★★</div>
+            <span>4.9 · 200+ reviews</span>
+          </div>
+          <div class="dr-walk-in">Walk-Ins Welcome</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div id="trust">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="trust-icon">🎓</span><div><strong>Columbia University</strong><span>Ivy League Educated</span></div></div>
+    <div class="trust-sep"></div>
+    <div class="trust-item"><span class="trust-icon">⭐</span><div><strong>4.9★ Rated Clinic</strong><span>200+ Verified Reviews</span></div></div>
+    <div class="trust-sep"></div>
+    <div class="trust-item"><span class="trust-icon">🚶</span><div><strong>Walk-Ins Welcome</strong><span>No appointment needed</span></div></div>
+    <div class="trust-sep"></div>
+    <div class="trust-item"><span class="trust-icon">💳</span><div><strong>Insurance Accepted</strong><span>Affordable self-pay options</span></div></div>
+    <div class="trust-sep"></div>
+    <div class="trust-item"><span class="trust-icon">🏆</span><div><strong>36 Years Experience</strong><span>Trusted since 1988</span></div></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-hdr center reveal">
+      <div class="eyebrow"><div class="eyebrow-bar"></div>Our Services</div>
+      <h2 class="section-title">Multi-Specialty Dental Care</h2>
+      <p class="section-sub">From your first cleaning to complex restorations — every treatment delivered with 36 years of expertise and genuine compassion.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card reveal"><div class="svc-card-icon">🪥</div><h3>Teeth Cleaning & Prevention</h3><p>Professional cleaning, polishing, and oral health assessment. The foundation of a lasting, healthy smile — recommended every 6 months.</p><span class="svc-tag">✓ Most Insurance Covered</span></div>
+      <div class="svc-card reveal"><div class="svc-card-icon">🔧</div><h3>Fillings & Restorations</h3><p>Tooth-colored composite fillings that blend seamlessly. Durable, natural-looking, and completed in a single visit.</p><span class="svc-tag">✓ Same-Day Treatment</span></div>
+      <div class="svc-card reveal"><div class="svc-card-icon">✨</div><h3>Teeth Whitening</h3><p>Professional whitening that delivers real results — up to 8 shades brighter. Safe, effective, and tailored to your enamel.</p><span class="svc-tag">✓ Visible Results</span></div>
+      <div class="svc-card reveal"><div class="svc-card-icon">🔬</div><h3>Root Canal Therapy</h3><p>Pain-free root canal treatment with modern techniques and anesthesia. Save your natural tooth and eliminate infection for good.</p><span class="svc-tag">✓ Pain-Free Procedure</span></div>
+      <div class="svc-card reveal"><div class="svc-card-icon">💎</div><h3>Veneers & Cosmetic Care</h3><p>Porcelain veneers, dental bonding, and smile makeovers — transform your smile with precision cosmetic craftsmanship.</p><span class="svc-tag">✓ Premium Results</span></div>
+      <div class="svc-card reveal"><div class="svc-card-icon">🦷</div><h3>Extractions & Implants</h3><p>Gentle tooth extractions and implant consultations. Restore function and confidence with long-lasting tooth replacement solutions.</p><span class="svc-tag">✓ Full Restorative Care</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal-l">
+        <div class="about-card">
+          <div class="about-card-bg"></div>
+          <div class="about-card-bg2"></div>
+          <div style="position:relative;z-index:1;">
+            <div class="about-dr-name">Dr. Nai Yan Lam</div>
+            <div class="about-dr-cred">DDS · GENERAL & COSMETIC DENTISTRY</div>
+            <div class="about-metrics">
+              <div class="metric"><div class="metric-num">36+</div><div class="metric-label">Years in Practice</div></div>
+              <div class="metric"><div class="metric-num">4.9★</div><div class="metric-label">Patient Rating</div></div>
+              <div class="metric"><div class="metric-num">5K+</div><div class="metric-label">Patients Served</div></div>
+              <div class="metric"><div class="metric-num">NYC</div><div class="metric-label">Based in Chinatown</div></div>
+            </div>
+            <div class="about-schools">
+              <div class="school-badge"><span>🎓</span>Columbia University — Dental Education</div>
+              <div class="school-badge"><span>🏥</span>NY-Jamaica Hospital — Clinical Training</div>
+              <div class="school-badge"><span>📍</span>198 Canal St STE 402, Chinatown NYC</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-float-badge">
+          <div class="float-num">#1</div>
+          <div class="float-label">Chinatown<br>Dentist</div>
+        </div>
+      </div>
+      <div class="about-text reveal-r">
+        <div class="eyebrow"><div class="eyebrow-bar"></div>About Dr. Lam</div>
+        <h2 class="section-title">36 Years of Trust in the Heart of Chinatown</h2>
+        <p class="section-sub">Dr. Nai Yan Lam has built one of Manhattan's most beloved dental practices — not through advertising, but through word of mouth, genuine care, and consistently exceptional results.</p>
+        <ul class="about-points">
+          <li><div class="check">✓</div>Columbia University-educated with over 36 years of hands-on clinical expertise</li>
+          <li><div class="check">✓</div>Multilingual practice serving the diverse Chinatown and greater NYC community</li>
+          <li><div class="check">✓</div>Known for affordable pricing without compromising quality or care</li>
+          <li><div class="check">✓</div>Walk-ins always welcome — no long waits, no unnecessary upsells</li>
+          <li><div class="check">✓</div>Trusted by students, families, seniors, and working professionals alike</li>
+        </ul>
+        <a href="#contact" class="btn-gold" style="display:inline-flex;">Book Your Visit →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="section-hdr center reveal">
+      <div class="eyebrow"><div class="eyebrow-bar"></div>How It Works</div>
+      <h2 class="section-title">Your Visit, Step by Step</h2>
+      <p class="section-sub">Stress-free from the moment you call to the moment you leave — we've made great dental care effortless.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal"><div class="process-num">1</div><h4>Call or Walk In</h4><p>Reach us by phone or simply walk in — no referral needed. We fit you in fast.</p></div>
+      <div class="process-step reveal"><div class="process-num">2</div><h4>Comprehensive Exam</h4><p>Full oral health assessment including X-rays and a personalised treatment plan.</p></div>
+      <div class="process-step reveal"><div class="process-num">3</div><h4>Expert Treatment</h4><p>Dr. Lam performs your treatment with 36 years of precision and gentle care.</p></div>
+      <div class="process-step reveal"><div class="process-num">4</div><h4>Leave Confident</h4><p>Clear aftercare guidance and a scheduled follow-up — your long-term smile is our goal.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-hdr center reveal">
+      <div class="eyebrow"><div class="eyebrow-bar"></div>Patient Reviews</div>
+      <h2 class="section-title">What New Yorkers Are Saying</h2>
+      <p class="section-sub">Hundreds of patients across every borough trust Dr. Lam for their dental care.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Prices are affordable with all around professional and friendly service. Honestly the best dental experience I've had in New York. Will be coming back for years."</p>
+        <div class="testi-author"><div class="testi-avatar">TN</div><div><div class="testi-name">Tony N.</div><div class="testi-label">NYC Resident · Google Review</div></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I've been recommending this place to every broke college student. Incredibly affordable, super kind staff, and Dr. Lam is genuinely one of the best dentists I've seen."</p>
+        <div class="testi-author"><div class="testi-avatar">JS</div><div><div class="testi-name">Jennifer S.</div><div class="testi-label">Student · Google Review</div></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Staff are very helpful and nice, and their price is super reasonable. I got two root canals done here and could not have been happier with the care and results."</p>
+        <div class="testi-author"><div class="testi-avatar">NL</div><div><div class="testi-name">Nian L.</div><div class="testi-label">Regular Patient · Google Review</div></div></div>
+      </div>
+    </div>
+    <div class="testi-platforms">
+      <div class="platform-badge">⭐ <strong>4.7</strong> · Google · 71 Reviews</div>
+      <div class="platform-badge">⭐ <strong>4.5</strong> · Yelp · 47 Reviews</div>
+      <div class="platform-badge">⭐ <strong>5.0</strong> · US News · 32 Reviews</div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section id="offer">
+  <div class="container">
+    <div class="eyebrow reveal" style="justify-content:center;"><div class="eyebrow-bar"></div>New Patient Offer</div>
+    <h2 class="section-title reveal">New Patient Special — First Visit from $75</h2>
+    <p class="offer-sub reveal">Includes full exam, X-rays, and professional cleaning. Limited new patient slots available each month — don't miss out.</p>
+    <div class="offer-box reveal">
+      <div class="offer-label">New Patient Package</div>
+      <div class="offer-deal">Full Exam + X-Rays + Cleaning — $75</div>
+      <div class="offer-fine">For new patients only · Limited availability · Call to confirm</div>
+    </div>
+    <div class="offer-btns reveal">
+      <a href="#contact" class="btn-gold">Claim This Offer →</a>
+      <a href="tel:+12127662128" class="btn-ghost">📞 Call: (212) 766-2128</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal-l">
+        <div class="eyebrow"><div class="eyebrow-bar"></div>Get In Touch</div>
+        <h2 class="section-title">Book Your Appointment</h2>
+        <p style="color:var(--text-mid);margin-bottom:2rem;font-size:0.95rem;line-height:1.75;">Ready for a healthier, more confident smile? Reach out today — walk-ins also welcome at our Chinatown office.</p>
+        <div class="contact-item"><div class="contact-icon">📍</div><div><strong>Location</strong><span>198 Canal St STE 402<br>New York, NY 10013 (Chinatown)</span></div></div>
+        <div class="contact-item"><div class="contact-icon">📞</div><div><strong>Phone</strong><span><a href="tel:+12127662128" style="color:var(--jade);text-decoration:none;">(212) 766-2128</a></span></div></div>
+        <div class="contact-item"><div class="contact-icon">🕐</div><div><strong>Hours</strong><span>Mon–Fri: 9:30 AM – 5:00 PM<br>Walk-ins welcome during all hours</span></div></div>
+        <div class="contact-item"><div class="contact-icon">🚇</div><div><strong>Subway</strong><span>Canal St Station — N, Q, R, W, J, Z, 6 lines</span></div></div>
+      </div>
+      <div class="contact-form reveal-r">
+        <div class="form-title">Request an Appointment</div>
+        <div class="form-row">
+          <div class="fg"><label>First Name</label><input type="text" placeholder="John"></div>
+          <div class="fg"><label>Last Name</label><input type="text" placeholder="Smith"></div>
+        </div>
+        <div class="fg"><label>Phone Number</label><input type="tel" placeholder="(212) 000-0000"></div>
+        <div class="fg"><label>Email Address</label><input type="email" placeholder="john@email.com"></div>
+        <div class="fg"><label>Service Needed</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Teeth Cleaning</option>
+            <option>Filling / Restoration</option>
+            <option>Teeth Whitening</option>
+            <option>Root Canal</option>
+            <option>Veneers / Cosmetic</option>
+            <option>Extraction / Implant</option>
+            <option>New Patient Exam</option>
+            <option>Not Sure — Need Advice</option>
+          </select>
+        </div>
+        <div class="fg"><label>Notes</label><textarea placeholder="Any questions or special requests?"></textarea></div>
+        <button class="form-btn">Request Appointment →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-hdr center reveal">
+      <div class="eyebrow"><div class="eyebrow-bar"></div>FAQ</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-sub">Everything you need before your first visit to Dr. Lam's practice.</p>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item reveal"><div class="faq-q">Do you accept walk-in patients? <span class="faq-icon">+</span></div><div class="faq-a">Yes! Walk-ins are always welcome at Dr. Lam's practice during business hours (Mon–Fri, 9:30 AM – 5:00 PM). No referral or pre-booking required.</div></div>
+      <div class="faq-item reveal"><div class="faq-q">What insurance plans do you accept? <span class="faq-icon">+</span></div><div class="faq-a">We accept most major dental insurance plans. We also offer very affordable self-pay pricing — call us at (212) 766-2128 to verify your specific coverage before your visit.</div></div>
+      <div class="faq-item reveal"><div class="faq-q">Is Dr. Lam accepting new patients? <span class="faq-icon">+</span></div><div class="faq-a">Absolutely. Dr. Lam is actively welcoming new patients from all backgrounds. We treat students, families, seniors, and professionals — everyone is welcome at our Chinatown practice.</div></div>
+      <div class="faq-item reveal"><div class="faq-q">How affordable is treatment at this practice? <span class="faq-icon">+</span></div><div class="faq-a">Dr. Lam is well known across NYC for providing premium-quality dental care at prices that are genuinely accessible. Hundreds of patients — including students and budget-conscious New Yorkers — recommend the practice specifically for its value.</div></div>
+      <div class="faq-item reveal"><div class="faq-q">Where exactly is the office located? <span class="faq-icon">+</span></div><div class="faq-a">We're located at 198 Canal St, Suite 402, New York, NY 10013 — in the heart of Chinatown. We're steps from the Canal St subway station (N, Q, R, W, J, Z, 6 trains), making us easily accessible from any borough.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="nav-logo-name" style="font-family:'Playfair Display',serif;font-size:1.2rem;color:white;display:block;">Dr. Nai Yan Lam</span>
+        <span class="nav-logo-sub" style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#D4A843;display:block;margin-top:2px;">DDS · Chinatown, New York</span>
+        <p>Columbia-educated, community-trusted. Providing expert, affordable dental care to New Yorkers for over 36 years.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Teeth Cleaning</a></li>
+          <li><a href="#services">Fillings & Restorations</a></li>
+          <li><a href="#services">Root Canal</a></li>
+          <li><a href="#services">Whitening</a></li>
+          <li><a href="#services">Veneers & Cosmetic</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Practice</h4>
+        <ul>
+          <li><a href="#about">About Dr. Lam</a></li>
+          <li><a href="#process">How It Works</a></li>
+          <li><a href="#testimonials">Patient Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+12127662128">(212) 766-2128</a></li>
+          <li><a href="#contact">Book Appointment</a></li>
+          <li><a href="#">198 Canal St STE 402</a></li>
+          <li><a href="#">New York, NY 10013</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Dr. Nai Yan Lam, DDS · All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta">
+  <a href="tel:+12127662128" class="s-btn call">📞 Call Now</a>
+  <a href="#contact" class="s-btn book">📅 Book Online</a>
+</div>
+
+<script>
+// ── HERO CANVAS — Dental/medical themed ──
+// Warm grid dots + floating tooth crosses + jade pulse rings
+const canvas = document.getElementById('hero-canvas');
+const ctx = canvas.getContext('2d');
+function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+resize();
+window.addEventListener('resize', resize, { passive: true });
+
+// Warm grid dots
+const dots = [];
+const gapX = 70, gapY = 70;
+const cols = Math.ceil(window.innerWidth / gapX) + 2;
+const rows = Math.ceil(window.innerHeight / gapY) + 2;
+for (let x = 0; x < cols; x++)
+  for (let y = 0; y < rows; y++)
+    dots.push({ x: x * gapX, y: y * gapY, ph: Math.random() * Math.PI * 2 });
+
+// Floating medical crosses
+const crosses = Array.from({ length: 10 }, () => ({
+  x: Math.random() * window.innerWidth,
+  y: Math.random() * window.innerHeight,
+  size: 5 + Math.random() * 10,
+  speed: 0.12 + Math.random() * 0.18,
+  drift: (Math.random() - 0.5) * 0.25,
+  op: 0.04 + Math.random() * 0.09,
+  ph: Math.random() * Math.PI * 2
+}));
+
+// Gold + jade pulse rings
+const rings = [
+  { r: 0, max: 200, spd: 0.7, tick: 0, delay: 0,   cx: 0.68, cy: 0.5, color: '196,146,42' },
+  { r: 0, max: 260, spd: 0.6, tick: 0, delay: 50,  cx: 0.68, cy: 0.5, color: '27,94,69' },
+  { r: 0, max: 180, spd: 0.8, tick: 0, delay: 100, cx: 0.68, cy: 0.5, color: '196,146,42' },
+];
+
+let mx = 0, my = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
+
+let t = 0;
+(function frame() {
+  requestAnimationFrame(frame);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  t++;
+
+  // dots
+  dots.forEach(d => {
+    const a = 0.15 + 0.12 * Math.sin(t * 0.018 + d.ph);
+    ctx.beginPath();
+    ctx.arc(d.x, d.y, 1.3, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(196,146,42,${a})`;
+    ctx.fill();
+  });
+
+  // subtle grid lines
+  ctx.strokeStyle = 'rgba(196,146,42,0.04)';
+  ctx.lineWidth = 0.5;
+  for (let i = 0; i < dots.length; i += 4) {
+    for (let j = i + 1; j < dots.length; j += 4) {
+      const dx = dots[i].x - dots[j].x, dy = dots[i].y - dots[j].y;
+      if (Math.sqrt(dx*dx+dy*dy) < 100) {
+        ctx.beginPath(); ctx.moveTo(dots[i].x, dots[i].y); ctx.lineTo(dots[j].x, dots[j].y); ctx.stroke();
+      }
+    }
+  }
+
+  // crosses
+  crosses.forEach(c => {
+    c.y -= c.speed; c.x += c.drift;
+    if (c.y < -30) { c.y = canvas.height + 30; c.x = Math.random() * canvas.width; }
+    if (c.x < -30 || c.x > canvas.width + 30) c.drift *= -1;
+    const fl = Math.sin(t * 0.03 + c.ph) * 3;
+    const s = c.size, px = c.x, py = c.y + fl;
+    const op = c.op + Math.sin(t * 0.02 + c.ph) * 0.02;
+    ctx.save();
+    ctx.globalAlpha = op;
+    ctx.fillStyle = '#C4922A';
+    ctx.fillRect(px - s, py - s * 0.28, s * 2, s * 0.56);
+    ctx.fillRect(px - s * 0.28, py - s, s * 0.56, s * 2);
+    ctx.restore();
+  });
+
+  // pulse rings
+  rings.forEach(ring => {
+    ring.tick++;
+    if (ring.tick < ring.delay) return;
+    ring.r += ring.spd;
+    if (ring.r > ring.max) ring.r = 0;
+    const prog = ring.r / ring.max;
+    const alpha = (1 - prog) * 0.15;
+    ctx.beginPath();
+    ctx.arc(ring.cx * canvas.width, ring.cy * canvas.height, ring.r, 0, Math.PI * 2);
+    ctx.strokeStyle = `rgba(${ring.color},${alpha})`;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+  });
+
+  // mouse glow
+  const g = ctx.createRadialGradient(mx, my, 0, mx, my, 140);
+  g.addColorStop(0, 'rgba(27,94,69,0.07)');
+  g.addColorStop(1, 'rgba(27,94,69,0)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, canvas.width, canvas.height);
+})();
+
+// ── GSAP HERO ENTRANCE ──
+gsap.registerPlugin(ScrollTrigger);
+gsap.from('.hero-eyebrow', { opacity: 0, y: 16, duration: 0.7, delay: 0.3 });
+gsap.from('.hero-title',   { opacity: 0, y: 28, duration: 0.9, delay: 0.5 });
+gsap.from('.hero-tagline', { opacity: 0, y: 18, duration: 0.8, delay: 0.7 });
+gsap.from('.hero-btns',    { opacity: 0, y: 16, duration: 0.7, delay: 0.9 });
+gsap.from('.hero-stats',   { opacity: 0, y: 16, duration: 0.7, delay: 1.1 });
+gsap.from('.dr-card',      { opacity: 0, x: 48, duration: 1.0, delay: 0.75, ease: 'power2.out' });
+
+// ── INTERSECTION OBSERVER — single system, no GSAP conflict ──
+const io = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const siblings = Array.from(
+      entry.target.parentElement.querySelectorAll('.reveal,.reveal-l,.reveal-r')
+    );
+    const idx = siblings.indexOf(entry.target);
+    setTimeout(() => entry.target.classList.add('on'), Math.max(0, idx) * 110);
+    io.unobserve(entry.target);
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => io.observe(el));
+
+// ── NAVBAR ──
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// ── FAQ ──
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement, isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href === '#') return;
+    e.preventDefault();
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
